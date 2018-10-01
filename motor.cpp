@@ -4,7 +4,7 @@ int mcsp=mcmid;
 float dtsp=dtmid;
 
 int spflag=0; //dt:0 mc:1
-int pmflag=0;
+int st_status=0;
 
 void motor(int a){
 	switch(a){
@@ -40,7 +40,7 @@ void motor(int a){
 			case BACK://リセット
 				break;
 
-			case A://
+			case A://押されてる間だけ動く
 			if(reccon[BUTTON]&(1<<0)){
 			motordrive(uu1,dtsp);//後日調整予定
 			printf("1 up\n");
@@ -51,9 +51,9 @@ void motor(int a){
 		break;
 
 
-			case Y://
+			case Y://押されている間だけ動く
 				if(reccon[BUTTON]&(1<<3)){
-					motordrive(uu2,dt_set(0.5));//後日調整予定
+					motordrive(uu2,dtsp);//後日調整予定
 					printf("2 up\n");
 				}else{
 					motordrive(uu2,0);
@@ -61,7 +61,7 @@ void motor(int a){
 				}
 				break;
 
-				case X://
+				case X://押されている間だけ動く
 					if(reccon[BUTTON]&(1<<2)){
 						motordrive(uu3,dtsp);//後日調整予定
 						printf("3 up\n");
@@ -71,7 +71,7 @@ void motor(int a){
 					}
 					break;
 
-				case B:
+				case B://押されている間だけ動く
 					if(reccon[BUTTON]&(1<<1)){
 						motordrive(uu4,dtsp);//後日調整予定
 						printf("4 up\n");

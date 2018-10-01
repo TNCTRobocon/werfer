@@ -24,20 +24,20 @@
 #define dtmin 0.2
 
 #define sel_set(x) x    //自由にselを変えれるやつ
-#define dt_set(x) x //自由にdtを変えれるやつ
+#define dt_set(x) x     //自由にdtを変えれるやつ
 
 
-void mcm(int,int);
-void dtm(int,float);
-void motor(int);
-void Front(float);
-void Back(float);
-void Stop(float);
+void mcm(int,int);  //mc制御用の関数
+void dtm(int,float);//dt制御用の関数
+void motor(int);    //上下のやつ
+void Front(float);  //前進
+void Back(float);   //後退
+void Stop(float);   //停止
 void motordrive(int,float);
 
 extern int mcsp;
 extern float dtsp;
 extern int spflag; //dt:0 mc:1
-extern int pmflag;
+extern int st_status;
 
 #endif

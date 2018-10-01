@@ -40,13 +40,13 @@ int main(){
 			case RT: //右旋回
 				if(reccon[RT] < lowest&&reccon[LT] < lowest){
 					if(reccon[DY] < lowest){//LSY_前進
-						Front(0.7);
+						Front(0.7);			//dt 0.7で前進
 						printf("flont\n");
 					}else if(reccon[DY] > highest){//LSY_後進
-						Back(0.7);
+						Back(0.7);			//dt 0.7で後退
 						printf("back\n");
 					}else{//停止
-						Stop(0);
+						Stop(0);			//停止
 						printf("stop\n");
 					}
 				}
@@ -61,56 +61,98 @@ int main(){
 			case LSY: //
 				break;
 
-			case LB:
+			case LB://左射出
 				if(reccon[BUTTON]&(1<<4)){
-					motordrive(pp1,-0.5);
+					motordrive(pp1,-0.5);//dt 0.5で回転
 					printf("left pooon start\n");
 				}else{
-					motordrive(pp1,0);
+					motordrive(pp1,0);	//停止
 					printf("left pooon stop\n");
 				}
 				break;
 
-			case RB:
+			case RB://右射出
 				if(reccon[BUTTON]&(1<<5)){
-					motordrive(pp2,-0.5);
+					motordrive(pp2,-0.5);//dt 0.5で回転
 					printf("right pooon start\n");
 				}else{
-					motordrive(pp2,0);
+					motordrive(pp2,0);	//停止
 					printf("right pooon stop\n");
 				}
 				break;
-
-			case Y: //射出スイッチ
-			if(pmflag==1){
+			case Y:
+				if(st_status==1){	//個別
 				dtsp = dtmid;
 				printf("%4.2f  ",dtsp);
+				motor(Y);	//dt 0.9で回転
+			}else if(st_status==0){//まとめて
+				break;
+			}
+			break;
+			case X:
+				if(st_status==1){	//個別
+				dtsp = dtmid;
+				printf("%4.2f  ",dtsp);
+				motor(X);	//dt 0.9で回転
+			}else if(st_status==0){//まとめて
+				break;
+			}
+			break;
+			case A: //スロー
+			if(st_status==1){	//個別
+				dtsp = dtmid;
+				printf("%4.2f  ",dtsp);//dt 0.9
+				motor(A);
+			}else if(st_status==0){//まとめて上昇
+				dtsp = dtmid;
+				motor(A);
+				motor(B);
+				motor(X);
 				motor(Y);
-			}else if(pmflag==0){
+			}
+			break;
+			case B: //個別
+			if(st_status==1){
+				dtsp = dtmid;
+				printf("%4.2f  ",dtsp);
+				motor(B);
+			}else if(st_status==0){	//まとめて下降
+				dtsp = -dtmid;
+				motor(A);
+				motor(B);
+				motor(X);
+				motor(Y);
+			}
+			break;
+			/*case Y:	//
+			if(st_status==1){	//下降
+				dtsp = dtmid;
+				printf("%4.2f  ",dtsp);
+				motor(Y);	//dt 0.9で回転
+			}else if(st_status==0){//上昇
 				dtsp = -dtmid;
 				printf("%4.2f  ",dtsp);
-				motor(Y);
+				motor(Y);	//dt -0.9で回転
 			}
 				break;
 
 			case X: //
-			if(pmflag==1){
+			if(st_status==1){
 				dtsp = dtmid;
 				printf("%4.2f  ",dtsp);
-				motor(X);
-			}else if(pmflag==0){
+				motor(X);	//dt 0.9で回転
+			}else if(st_status==0){
 				dtsp = -dtmid;
 				printf("%4.2f  ",dtsp);
-				motor(X);
+				motor(X);	//dt -0.9で回転
 			}
 				break;
-
 			case A: //スロー
-			if(pmflag==1){
+			if(st_status==1){
 				dtsp = dtmid;
 				printf("%4.2f  ",dtsp);
 				motor(A);
-			}else if(pmflag==0){
+			}else if(st_status==0){
 				dtsp = -dtmid;
 				printf("%4.2f  ",dtsp);
 				motor(A);
@@ -119,28 +161,28 @@ int main(){
 
 
 			case B: //ダッシュ
-			if(pmflag==1){
+			if(st_status==1){
 				dtsp = dtmid;
 				printf("%4.2f  ",dtsp);
 				motor(B);
-			}else if(pmflag==0){
+			}else if(st_status==0){
 				dtsp = -dtmid;
 				printf("%4.2f  ",dtsp);
 				motor(B);
 			}
 				break;
-
+*/
 
 
 
 			case START: //
 			if(reccon[BUTTON]&(1<<7)){
-				if(pmflag==0){
-					pmflag=1;
-					printf("plus\n");
-				}else if(pmflag==1){
-					pmflag=0;
-					printf("minus\n");
+				if(st_status==0){
+					st_status=1;
+					printf("separate\n");
+				}else if(st_status==1){
+					st_status=0;
+					printf("together\n");
 				}else{}
 			}else{}
 			break;
