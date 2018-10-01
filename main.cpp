@@ -48,6 +48,8 @@ int main()
 
 	while (1)
 	{
+		func[TGE](getcon()); //まとめて昇降するやつ
+		//func[SEP](getcon());	//個別に昇降するやつ
 		switch (getcon())
 		{
 		case DX: //移動
@@ -145,8 +147,6 @@ int main()
 			break;
 
 		default:
-			func[TGE](getcon()); //まとめて昇降するやつ
-			//func[SEP](getcon());	//個別に昇降するやつ
 			break;
 		}
 	}
