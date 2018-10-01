@@ -21,5 +21,5 @@
 #include"motor.h"
 
 extern int srid;
-
+extern int modeflag;
 #endif
