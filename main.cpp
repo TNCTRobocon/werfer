@@ -105,6 +105,7 @@ int main(){
 				motor(A);
 			}else if(st_status==0){//まとめて上昇
 				dtsp = dtmid;
+				printf("up");
 				motor(A);
 				motor(B);
 				motor(X);
@@ -118,6 +119,7 @@ int main(){
 				motor(B);
 			}else if(st_status==0){	//まとめて下降
 				dtsp = -dtmid;
+				printf("dowm");
 				motor(A);
 				motor(B);
 				motor(X);
