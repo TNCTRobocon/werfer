@@ -39,9 +39,9 @@ void together(int con)
 			dtsp = dtmid;
 			printf("up");
 			motor(A);
-			motor(B);
-			motor(X);
 			motor(Y);
+			motor(X);
+			motor(B);
 		}
 		break;
 	case B: //個別
@@ -56,9 +56,9 @@ void together(int con)
 			dtsp = -dtmid;
 			printf("dowm");
 			motor(A);
-			motor(B);
-			motor(X);
 			motor(Y);
+			motor(X);
+			motor(B);
 		}
 		break;
 	case START: //
