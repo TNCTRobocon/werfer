@@ -4,7 +4,7 @@ int mcsp = mcmid;
 float dtsp = dtmid;
 
 int spflag = 0; //dt:0 mc:1
-int st_status = 0;
+int st_status = 1;
 
 void motor(int a)
 {
@@ -48,7 +48,7 @@ void motor(int a)
 		else
 		{
 			motordrive(r_out, 0);
-			printf("right outside stop\n");
+			//printf("right outside stop\n");
 		}
 		break;
 
@@ -61,7 +61,7 @@ void motor(int a)
 		else
 		{
 			motordrive(r_in, 0);
-			printf("right inside stop\n");
+			//printf("right inside stop\n");
 		}
 		break;
 
@@ -74,7 +74,7 @@ void motor(int a)
 		else
 		{
 			motordrive(l_in, 0);
-			printf("left inside stop\n");
+			//printf("left inside stop\n");
 		}
 		break;
 
@@ -87,7 +87,8 @@ void motor(int a)
 		else
 		{
 			motordrive(l_out, 0);
-			printf("left outside stop\n");
+			printf("\n");
+			//printf("left outside stop\n");
 		}
 		break;
 	}

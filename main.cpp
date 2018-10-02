@@ -49,105 +49,106 @@ int main()
 	{
 		//func[TGE](getcon()); //まとめて昇降するやつ
 		func[SEP](getcon()); //個別に昇降するやつ
-		//if(st_status == 1){
-		switch (getcon())
+		if (!st_status)//キャリブレーションの時は動かない
 		{
-		case DX: //移動
-		case DY: //移動
-		case LT: //左旋回
-		case RT: //右旋回
-			if (reccon[RT] < lowest && reccon[LT] < lowest)
+			switch (getcon())
 			{
-				if (reccon[DY] < lowest)
-				{				//LSY_前進
-					Front(0.7); //dt 0.7で前進
-					printf("flont\n");
+			case DX: //移動
+			case DY: //移動
+			case LT: //左旋回
+			case RT: //右旋回
+				if (reccon[RT] < lowest && reccon[LT] < lowest)
+				{
+					if (reccon[DY] < lowest)
+					{				//LSY_前進
+						Front(0.7); //dt 0.7で前進
+						printf("flont\n");
+					}
+					else if (reccon[DY] > highest)
+					{			   //LSY_後進
+						Back(0.7); //dt 0.7で後退
+						printf("back\n");
+					}
+					else
+					{
+						Stop(0); //停止
+						printf("stop\n");
+					}
 				}
-				else if (reccon[DY] > highest)
-				{			   //LSY_後進
-					Back(0.7); //dt 0.7で後退
-					printf("back\n");
+				break;
+
+			case RSX: //
+				break;
+			case RSY: //
+				break;
+			case LSX: //
+				break;
+			case LSY: //
+				break;
+			case LB: //左射出
+				if (reccon[BUTTON] & (1 << 4))
+				{
+					motordrive(pp1, -0.5); //dt 0.5で回転
+					printf("left pooon start\n");
 				}
 				else
 				{
-					Stop(0); //停止
-					printf("stop\n");
+					motordrive(pp1, 0); //停止
+					printf("left pooon stop\n");
 				}
-			}
-			break;
+				break;
 
-		case RSX: //
-			break;
-		case RSY: //
-			break;
-		case LSX: //
-			break;
-		case LSY: //
-			break;
-		case LB: //左射出
-			if (reccon[BUTTON] & (1 << 4))
-			{
-				motordrive(pp1, -0.5); //dt 0.5で回転
-				printf("left pooon start\n");
-			}
-			else
-			{
-				motordrive(pp1, 0); //停止
-				printf("left pooon stop\n");
-			}
-			break;
-
-		case RB: //右射出
-			if (reccon[BUTTON] & (1 << 5))
-			{
-				motordrive(pp2, -0.5); //dt 0.5で回転
-				printf("right pooon start\n");
-			}
-			else
-			{
-				motordrive(pp2, 0); //停止
-				printf("right pooon stop\n");
-			}
-			break;
-		case MIDBUT:
-			if (reccon[BUTTON] & (1 << 8))
-			{
-				if (spflag == 0)
+			case RB: //右射出
+				if (reccon[BUTTON] & (1 << 5))
 				{
-					spflag = 1;
-					printf("mc\n");
+					motordrive(pp2, -0.5); //dt 0.5で回転
+					printf("right pooon start\n");
 				}
-				else if (spflag == 1)
+				else
 				{
-					spflag = 0;
-					printf("dt\n");
+					motordrive(pp2, 0); //停止
+					printf("right pooon stop\n");
+				}
+				break;
+			case MIDBUT:
+				if (reccon[BUTTON] & (1 << 8))
+				{
+					if (spflag == 0)
+					{
+						spflag = 1;
+						printf("mc\n");
+					}
+					else if (spflag == 1)
+					{
+						spflag = 0;
+						printf("dt\n");
+					}
+					else
+					{
+					}
 				}
 				else
 				{
 				}
-			}
-			else
-			{
-			}
-			break;
+				break;
 
-		case BACK: //リセット
-			if (reccon[BUTTON] & (1 << 6))
-			{
-				serialPrintf(srid, "sel 0\r");
-				serialPrintf(srid, "reboot\r");
-				printf("all stop and reboot\n");
-			}
-			else
-			{
-				printf("completed\n");
-			}
+			case BACK: //リセット
+				if (reccon[BUTTON] & (1 << 6))
+				{
+					serialPrintf(srid, "sel 0\r");
+					serialPrintf(srid, "reboot\r");
+					printf("all stop and reboot\n");
+				}
+				else
+				{
+					printf("completed\n");
+				}
 
-			break;
+				break;
 
-		default:
-			break;
+			default:
+				break;
+			}
 		}
-		//}
 	}
 }
