@@ -5,10 +5,10 @@ void together(int con)
 	{
 	case Y:
 		if (st_status == 1)
-		{ //個別
+		{ //調整(右外)
 			dtsp = dtmid;
 			printf("%4.2f  ", dtsp);
-			motor(Y); //dt 0.9で回転
+			motor(A); //dt 0.9で上層
 		}
 		else if (st_status == 0)
 		{ //まとめて
@@ -18,9 +18,9 @@ void together(int con)
 	case X:
 		if (st_status == 1)
 		{ //個別
-			dtsp = dtmid;
+			/*dtsp = dtmid;
 			printf("%4.2f  ", dtsp);
-			motor(X); //dt 0.9で回転
+			motor(X); //dt 0.9で回転*/
 		}
 		else if (st_status == 0)
 		{ //まとめて
@@ -29,10 +29,10 @@ void together(int con)
 		break;
 	case A: //スロー
 		if (st_status == 1)
-		{ //個別
-			dtsp = dtmid;
-			printf("%4.2f  ", dtsp); //dt 0.9
-			motor(A);
+		{ //個別(右外)
+			dtsp = -dtmid;
+			printf("%4.2f  ", dtsp);
+			motor(A); //dt 0.9で下降
 		}
 		else if (st_status == 0)
 		{ //まとめて上昇

@@ -15,9 +15,8 @@ void setupUART()
 	serialPrintf(srid, "mc 0\r");
 }
 
-#define	TGE 0
-#define	SEP 1
-
+#define TGE 0
+#define SEP 1
 
 int main()
 {
@@ -48,8 +47,9 @@ int main()
 
 	while (1)
 	{
-		func[TGE](getcon()); //まとめて昇降するやつ
-		//func[SEP](getcon());	//個別に昇降するやつ
+		//func[TGE](getcon()); //まとめて昇降するやつ
+		func[SEP](getcon()); //個別に昇降するやつ
+		//if(st_status == 1){
 		switch (getcon())
 		{
 		case DX: //移動
@@ -69,7 +69,7 @@ int main()
 					printf("back\n");
 				}
 				else
-				{			 //停止
+				{
 					Stop(0); //停止
 					printf("stop\n");
 				}
@@ -84,7 +84,6 @@ int main()
 			break;
 		case LSY: //
 			break;
-
 		case LB: //左射出
 			if (reccon[BUTTON] & (1 << 4))
 			{
@@ -149,6 +148,6 @@ int main()
 		default:
 			break;
 		}
+		//}
 	}
 }
-

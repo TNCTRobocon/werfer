@@ -1,10 +1,10 @@
 #ifndef MOTOR_H
 #define MOTOR_H
 
-#define uu1 21//0//////////16↓
-#define uu2 22//1
-#define uu3 23//2
-#define uu4 24//3
+#define r_out 16//0//////////16↓
+#define r_in 17//1
+#define l_in 18//2
+#define l_out 19//3
 
 #define tirerf 20 //タイヤ右前//4
 #define tirelf 21 //タイヤ左前//5
