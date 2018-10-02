@@ -67,12 +67,12 @@ void together(int con)
 			if (st_status == 0)
 			{
 				st_status = 1;
-				printf("separate\n");
+				printf("calibration\n");
 			}
 			else if (st_status == 1)
 			{
 				st_status = 0;
-				printf("together\n");
+				printf("process now\n");
 			}
 			else
 			{
