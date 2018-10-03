@@ -113,7 +113,6 @@ void config()
 			motordrive(r_out, 0);
 			printf("right outside stop\n");
 		}
-	}
 	break;
 
 case X: //
@@ -131,7 +130,7 @@ case A: //スロー
 		motordrive(r_out, 0);
 		printf("right outside stop\n");
 	}
-}
+
 
 case B:		//ダッシュ
 case START: //

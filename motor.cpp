@@ -6,94 +6,13 @@ float dtsp = dtmid;
 int spflag = 0; //dt:0 mc:1
 int st_status = 1;
 
-void motor(int a)
-{
-	switch (a)
-	{
-	case DX: //
-	case DY: //
-	case RT: //
-	case LT: //
-		break;
-
-	case LB:
-		break;
-
-	case RB:
-
-		break;
-
-	case RSX: //
-		break;
-	case LSX: //
-
-		break;
-
-	case LSY: //
-
-		break;
-
-	case START: //
-		break;
-
-	case BACK: //リセット
-		break;
-
-	case A: //押されてる間だけ動く
-		if (reccon[BUTTON] & (1 << 0))
-		{
-			motordrive(r_out, dtsp); //後日調整予定
-			printf("right outside move\n");
-		}
-		else
-		{
-			motordrive(r_out, 0);
-			//printf("right outside stop\n");
-		}
-		break;
-
-	case Y: //押されている間だけ動く
-		if (reccon[BUTTON] & (1 << 3))
-		{
-			motordrive(r_in, dtsp); //後日調整予定
-			printf("right inside move\n");
-		}
-		else
-		{
-			motordrive(r_in, 0);
-			//printf("right inside stop\n");
-		}
-		break;
-
-	case X: //押されている間だけ動く
-		if (reccon[BUTTON] & (1 << 2))
-		{
-			motordrive(l_in, dtsp); //後日調整予定
-			printf("left outside move\n");
-		}
-		else
-		{
-			motordrive(l_in, 0);
-			//printf("left inside stop\n");
-		}
-		break;
-
-	case B: //押されている間だけ動く
-		if (reccon[BUTTON] & (1 << 1))
-		{
-			motordrive(l_out, dtsp); //後日調整予定
-			printf("left outside move\n");
-		}
-		else
-		{
-			motordrive(l_out, 0);
-			printf("\n");
-			//printf("left outside stop\n");
-		}
-		break;
-	}
+void lift(int value){
+	motordrive(r_in,value);
+	motordrive(r_out,value);
+	motordrive(l_in,value);
+	motordrive(l_out,value);
+	printf("lifting\n");
 }
-
 void dtm(int id, float dt)
 { //dt
 	serialPrintf(srid, "sel %d\r", id);
