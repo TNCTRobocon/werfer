@@ -83,24 +83,8 @@ void config()
 		break;
 
 	case LB:
-		if (reccon[BUTTON] & (1 << 4))
-		{
-		}
-		else
-		{
-		}
-		break;
-
 	case RB:
-		if (reccon[BUTTON] & (1 << 5))
-		{
-		}
-		else
-		{
-		}
-		break;
-
-	case Y: //射出スイ
+	case Y: //右外上昇
 		dtsp = dtmid;
 		printf("%4.2f  ", dtsp);
 		if (reccon[BUTTON] & (1 << 3))
@@ -117,7 +101,7 @@ void config()
 
 case X: //
 
-case A: //スロー
+case A: //右外下降
 	dtsp = -dtmid;
 	printf("%4.2f  ", dtsp);
 	if (reccon[BUTTON] & (1 << 3))
@@ -253,9 +237,7 @@ void move()
 		}
 		break;
 
-	case Y: //射出スイッチ
-		if (pmflag == 1)
-		{
+	case Y: //射出スイッ
 			dtsp = dtmid;
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 3))
@@ -268,27 +250,9 @@ void move()
 				motordrive(uu2, 0);
 				printf("2 stop\n");
 			}
-		}
-		else if (pmflag == 0)
-		{
-			dtsp = -dtmid;
-			printf("%4.2f  ", dtsp);
-			if (reccon[BUTTON] & (1 << 3))
-			{
-				motordrive(uu2, dtsp); //後日調整予定
-				printf("2 up\n");
-			}
-			else
-			{
-				motordrive(uu2, 0);
-				printf("2 stop\n");
-			}
-		}
 		break;
 
 	case X: //
-		if (pmflag == 1)
-		{
 			dtsp = dtmid;
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 2))
@@ -301,27 +265,9 @@ void move()
 				motordrive(uu3, 0);
 				printf("3 stop\n");
 			}
-		}
-		else if (pmflag == 0)
-		{
-			dtsp = -dtmid;
-			printf("%4.2f  ", dtsp);
-			if (reccon[BUTTON] & (1 << 2))
-			{
-				motordrive(uu3, dtsp); //後日調整予定
-				printf("3 up\n");
-			}
-			else
-			{
-				motordrive(uu3, 0);
-				printf("3 stop\n");
-			}
-		}
 		break;
 
 	case A: //スロー
-		if (pmflag == 1)
-		{
 			dtsp = dtmid;
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 0))
@@ -334,27 +280,9 @@ void move()
 				motordrive(uu1, 0);
 				printf("1 stop\n");
 			}
-		}
-		else if (pmflag == 0)
-		{
-			dtsp = -dtmid;
-			printf("%4.2f  ", dtsp);
-			if (reccon[BUTTON] & (1 << 0))
-			{
-				motordrive(uu1, dtsp); //後日調整予定
-				printf("1 up\n");
-			}
-			else
-			{
-				motordrive(uu1, 0);
-				printf("1 stop\n");
-			}
-		}
 		break;
 
 	case B: //ダッシュ
-		if (pmflag == 1)
-		{
 			dtsp = dtmid;
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 1))
@@ -367,22 +295,6 @@ void move()
 				motordrive(uu4, 0);
 				printf("4 stop\n");
 			}
-		}
-		else if (pmflag == 0)
-		{
-			dtsp = -dtmid;
-			printf("%4.2f  ", dtsp);
-			if (reccon[BUTTON] & (1 << 1))
-			{
-				motordrive(uu4, dtsp); //後日調整予定
-				printf("4 up\n");
-			}
-			else
-			{
-				motordrive(uu4, 0);
-				printf("4 stop\n");
-			}
-		}
 		break;
 
 	case START: //
