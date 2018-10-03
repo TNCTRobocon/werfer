@@ -3,7 +3,7 @@
 
 #include "headers.h"
 
-int separate(int con);
-int together(int con);
+void config();
+void move();
 
 #endif

@@ -19,6 +19,7 @@
 
 #include"controller.h"
 #include"motor.h"
+#include "func.h"
 
 extern int srid;
 
