@@ -102,7 +102,7 @@ case X: //
 
 case A: //右外下降
 	dtsp = -dtmid;
-	if (reccon[BUTTON] & (1 << 3))
+	if (reccon[BUTTON] & (1 << 0))
 	{
 		motordrive(r_out, dtsp);
 		printf("right outside down\n");
