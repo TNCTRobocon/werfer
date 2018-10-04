@@ -1,4 +1,1 @@
-motor.o
-main.o
-func.o
-controller.o
+*.o
