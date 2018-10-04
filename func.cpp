@@ -5,13 +5,13 @@ void lift_in_right()
 	if (reccon[RSY] > highest)
 	{
 		dtsp = dtmid;
-		motordrive(r_in, dtdp);
+		motordrive(r_in, dtsp);
 		printf("right outside up\n");
 	}
 	else if (reccon[RSY] < lowest)
 	{
 		dtsp = -dtmid;
-		motordrive(r_in, dtdp);
+		motordrive(r_in, dtsp);
 		printf("right outside down\n");
 	}
 	else
@@ -21,17 +21,17 @@ void lift_in_right()
 	}
 }
 
-void lift_in_right(){
+void lift_in_left(){
 	if (reccon[LSY] > highest)
 	{
 		dtsp = dtmid;
-		motordrive(l_in, dtdp);
+		motordrive(l_in, dtsp);
 		printf("left outside up\n");
 	}
 	else if (reccon[LSY] < lowest)
 	{
 		dtsp = -dtmid;
-		motordrive(l_in, dtdp);
+		motordrive(l_in, dtsp);
 		printf("left outside down\n");
 	}
 	else
@@ -120,14 +120,14 @@ case B:		//ダッシュ
 case START: //
 if (reccon[BUTTON] & (1 << 7))
 {
-	if (modeflag == 0)
+	if (st_status == 0)
 	{
-		modeflag = 1;
+		st_status = 1;
 		printf("----------------------\n-----setting mode-----\n----------------------\n");
 	}
-	else if (modeflag == 1)
+	else if (st_status == 1)
 	{
-		modeflag = 0;
+		st_status = 0;
 		printf("----------------------\n-------move mode------\n----------------------\n");
 	}
 }
@@ -242,13 +242,9 @@ void move()
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 3))
 			{
-				motordrive(uu2, dtsp); //後日調整予定
-				printf("2 up\n");
 			}
 			else
 			{
-				motordrive(uu2, 0);
-				printf("2 stop\n");
 			}
 		break;
 
@@ -257,13 +253,9 @@ void move()
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 2))
 			{
-				motordrive(uu3, dtsp); //後日調整予定
-				printf("3 up\n");
 			}
 			else
 			{
-				motordrive(uu3, 0);
-				printf("3 stop\n");
 			}
 		break;
 
@@ -272,13 +264,9 @@ void move()
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 0))
 			{
-				motordrive(uu1, dtsp); //後日調整予定
-				printf("1 up\n");
 			}
 			else
 			{
-				motordrive(uu1, 0);
-				printf("1 stop\n");
 			}
 		break;
 
@@ -287,27 +275,23 @@ void move()
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 1))
 			{
-				motordrive(uu4, dtsp); //後日調整予定
-				printf("4 up\n");
 			}
 			else
 			{
-				motordrive(uu4, 0);
-				printf("4 stop\n");
 			}
 		break;
 
 	case START: //
 		if (reccon[BUTTON] & (1 << 7))
 		{
-			if (modeflag == 0)
+			if (st_status == 0)
 			{
-				modeflag = 1;
+				st_status = 1;
 				printf("----------------------\n-----setting mode-----\n----------------------\n");
 			}
-			else if (modeflag == 1)
+			else if (st_status == 1)
 			{
-				modeflag = 0;
+				st_status = 0;
 				printf("----------------------\n-------move mode------\n----------------------\n");
 			}
 		}
