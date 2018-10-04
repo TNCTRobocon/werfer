@@ -11,6 +11,7 @@
 #define tirerb 22 //タイヤ右後//6
 #define tirelb 23 //タイヤ左後//7
 
+#define throwwww 27 //sel11
 
 #define pp1 24//8
 #define pp2 25//9

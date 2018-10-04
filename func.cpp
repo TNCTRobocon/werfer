@@ -240,9 +240,13 @@ void move()
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 3))
 			{
+				motordrive(throwwww,dtsp);
+				printf("throwww\n");
 			}
 			else
 			{
+				motordrive(throwwww,0);
+				printf("throwww\n");
 			}
 		break;
 
