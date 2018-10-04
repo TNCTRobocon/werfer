@@ -11,7 +11,6 @@ void lift(int value){
 	motordrive(r_out,value);
 	motordrive(l_in,value);
 	motordrive(l_out,value);
-	printf("lifting\n");
 }
 void dtm(int id, float dt)
 { //dt

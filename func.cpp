@@ -66,7 +66,7 @@ void config()
 			else
 			{ //停止
 				motordrive(l_out, 0);
-				printf("left out stop\n");
+				printf("left outside stop\n");
 			}
 		}
 		break;
@@ -86,7 +86,6 @@ void config()
 	case RB:
 	case Y: //右外上昇
 		dtsp = dtmid;
-		printf("%4.2f  ", dtsp);
 		if (reccon[BUTTON] & (1 << 3))
 		{
 			motordrive(r_out, dtsp);
@@ -103,7 +102,6 @@ case X: //
 
 case A: //右外下降
 	dtsp = -dtmid;
-	printf("%4.2f  ", dtsp);
 	if (reccon[BUTTON] & (1 << 3))
 	{
 		motordrive(r_out, dtsp);
@@ -261,23 +259,31 @@ void move()
 
 	case A: //スロー
 			dtsp = dtmid;
-			printf("%4.2f  ", dtsp);
+			//printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 0))
 			{
+				lift(dtsp);
+				printf("lift move up\n");
 			}
 			else
 			{
+				lift(0);
+				printf("lift stop\n");
 			}
 		break;
 
 	case B: //ダッシュ
-			dtsp = dtmid;
-			printf("%4.2f  ", dtsp);
+			dtsp = -dtmid;
+			//printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 1))
 			{
+				lift(dtsp);
+				printf("lift move down\n");
 			}
 			else
 			{
+				lift(0);
+				printf("lift stop\n");
 			}
 		break;
 
