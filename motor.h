@@ -1,10 +1,10 @@
 #ifndef MOTOR_H
 #define MOTOR_H
 
-#define r_out 18//0//////////16↓
-#define r_in 16//1
-#define l_in 17//2
-#define l_out 19//3
+#define r_out 19//3//////////16↓
+#define r_in 17//1
+#define l_in 16//0
+#define l_out 18//2
 
 #define tirerf 20 //タイヤ右前//4
 #define tirelf 21 //タイヤ左前//5
@@ -26,7 +26,8 @@
 #define sel_set(x) x    //自由にselを変えれるやつ
 #define dt_set(x) x     //自由にdtを変えれるやつ
 
-void lift(int);
+void lift(float);
+void lift_stop();
 void mcm(int,int);  //mc制御用の関数
 void dtm(int,float);//dt制御用の関数
 void motor(int);    //上下のやつ

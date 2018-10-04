@@ -4,13 +4,13 @@ void lift_in_right()
 {
 	if (reccon[RSY] > highest)
 	{
-		dtsp = dtmid;
+		dtsp = -dtmid;
 		motordrive(r_in, dtsp);
 		printf("right outside up\n");
 	}
 	else if (reccon[RSY] < lowest)
 	{
-		dtsp = -dtmid;
+		dtsp = dtmid;
 		motordrive(r_in, dtsp);
 		printf("right outside down\n");
 	}
@@ -24,13 +24,13 @@ void lift_in_right()
 void lift_in_left(){
 	if (reccon[LSY] > highest)
 	{
-		dtsp = dtmid;
+		dtsp = -dtmid;
 		motordrive(l_in, dtsp);
 		printf("left outside up\n");
 	}
 	else if (reccon[LSY] < lowest)
 	{
-		dtsp = -dtmid;
+		dtsp = dtmid;
 		motordrive(l_in, dtsp);
 		printf("left outside down\n");
 	}
@@ -263,11 +263,19 @@ void move()
 			if (reccon[BUTTON] & (1 << 0))
 			{
 				lift(dtsp);
+				/*motordrive(r_in,dtsp);
+				motordrive(r_out,dtsp);
+				motordrive(l_in,dtsp);
+				motordrive(l_out,dtsp);*/
 				printf("lift move up\n");
 			}
 			else
 			{
-				lift(0);
+				lift_stop();
+				/*motordrive(r_in,0);
+				motordrive(r_out,0);
+				motordrive(l_in,0);
+				motordrive(l_out,0);*/
 				printf("lift stop\n");
 			}
 		break;
@@ -282,7 +290,7 @@ void move()
 			}
 			else
 			{
-				lift(0);
+				lift_stop();
 				printf("lift stop\n");
 			}
 		break;
