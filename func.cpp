@@ -5,13 +5,17 @@ void lift_in_right()
 	if (reccon[RSY] > highest)
 	{
 		dtsp = -dtmid;
-		motordrive(r_in, dtsp);
+		mcsp = mcmid;
+		if(!spflag)motordrive(r_in, dtsp);
+		else if(spflag)motordrive(r_in,mcsp);
 		printf("right outside up\n");
 	}
 	else if (reccon[RSY] < lowest)
 	{
 		dtsp = dtmid;
-		motordrive(r_in, dtsp);
+		mcsp = mcmid;
+		if(!spflag)motordrive(r_in, dtsp);
+		else if(spflag)motordrive(r_in,mcsp);
 		printf("right outside down\n");
 	}
 	else
@@ -25,13 +29,17 @@ void lift_in_left(){
 	if (reccon[LSY] > highest)
 	{
 		dtsp = -dtmid;
-		motordrive(l_in, dtsp);
+		mcsp = -mcmid;
+		if(!spflag)motordrive(l_in, dtsp);
+		else if(spflag)motordrive(l_in,mcsp);
 		printf("left outside up\n");
 	}
 	else if (reccon[LSY] < lowest)
 	{
 		dtsp = dtmid;
-		motordrive(l_in, dtsp);
+		mcsp = mcmid;
+		if(!spflag)motordrive(l_in, dtsp);
+		else if(spflag)motordrive(l_in,mcsp);
 		printf("left outside down\n");
 	}
 	else
@@ -40,6 +48,21 @@ void lift_in_left(){
 		printf("left inside stop\n");
 	}
 }
+/*
+void dt_mc(int sel ,float value){
+	if((value < 1 && value > -1) && spflag == 0){
+		dtsp = value;
+		motordrive(sel,dtsp);
+		printf("dt\n");
+	}else if( spflag == 1){
+		mcsp = value;
+		motordrive(sel,mcsp);
+		printf("mc\n");
+	}else{
+		printf("error\n");
+		motordrive(sel,0);
+	}
+}*/
 
 void config()
 {
@@ -52,7 +75,7 @@ void config()
 		if (reccon[RT] < lowest && reccon[LT] < lowest)
 		{
 			if (reccon[DY] < lowest)
-			{ //LSY_前進
+			{ //LSY_上昇
 				dtsp = dtmid;
 				mcsp = mcmid;
 				if(!spflag)motordrive(l_out, dtsp);
@@ -60,7 +83,7 @@ void config()
 				printf("left outside up\n");
 			}
 			else if (reccon[DY] > highest)
-			{ //LSY_後進
+			{ //LSY＿下降
 				dtsp = -dtmid;
 				mcsp = -mcmid;
 				if(!spflag)motordrive(l_out, dtsp);
@@ -91,9 +114,11 @@ void config()
 	case RB:
 	case Y: //右外上昇
 		dtsp = dtmid;
+		mcsp = mcmid;
 		if (reccon[BUTTON] & (1 << 3))
 		{
-			motordrive(r_out, dtsp);
+			if(!spflag)motordrive(r_out, dtsp);
+			else if(spflag)motordrive(r_out,mcsp);
 			printf("right outside up\n");
 		}
 		else
@@ -107,9 +132,11 @@ case X: //
 
 case A: //右外下降
 	dtsp = -dtmid;
+	mcsp = -mcmid;
 	if (reccon[BUTTON] & (1 << 0))
 	{
-		motordrive(r_out, dtsp);
+		if(!spflag)motordrive(r_out, dtsp);
+		else if(spflag)motordrive(r_out,mcsp);
 		printf("right outside down\n");
 	}
 	else
