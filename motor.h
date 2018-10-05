@@ -13,6 +13,8 @@
 
 #define throwwww 27 //sel11
 
+#define pen 26 //ふりこ
+
 #define pp1 24//8
 #define pp2 25//9
 

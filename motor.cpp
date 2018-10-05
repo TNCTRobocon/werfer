@@ -7,9 +7,9 @@ int spflag = 0; //dt:0 mc:1
 int st_status = 1;
 
 void lift(float value){
-	motordrive(r_in,value);
+	motordrive(r_in,-value);
 	motordrive(r_out,value);
-	motordrive(l_in,value);
+	motordrive(l_in,-value);
 	motordrive(l_out,value);
 }
 void lift_stop(){

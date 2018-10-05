@@ -4,7 +4,7 @@ void lift_in_right()
 {
 	if (reccon[RSY] > highest)
 	{
-		dtsp = -dtmid;
+		dtsp = dtmid;
 		mcsp = mcmid;
 		if(!spflag)motordrive(r_in, dtsp);
 		else if(spflag)motordrive(r_in,mcsp);
@@ -12,7 +12,7 @@ void lift_in_right()
 	}
 	else if (reccon[RSY] < lowest)
 	{
-		dtsp = dtmid;
+		dtsp = -dtmid;
 		mcsp = mcmid;
 		if(!spflag)motordrive(r_in, dtsp);
 		else if(spflag)motordrive(r_in,mcsp);
@@ -28,16 +28,16 @@ void lift_in_right()
 void lift_in_left(){
 	if (reccon[LSY] > highest)
 	{
-		dtsp = -dtmid;
-		mcsp = -mcmid;
+		dtsp = dtmid;
+		mcsp = mcmid;
 		if(!spflag)motordrive(l_in, dtsp);
 		else if(spflag)motordrive(l_in,mcsp);
 		printf("left outside up\n");
 	}
 	else if (reccon[LSY] < lowest)
 	{
-		dtsp = dtmid;
-		mcsp = mcmid;
+		dtsp = -dtmid;
+		mcsp = -mcmid;
 		if(!spflag)motordrive(l_in, dtsp);
 		else if(spflag)motordrive(l_in,mcsp);
 		printf("left outside down\n");
@@ -77,7 +77,7 @@ void config()
 			if (reccon[DY] < lowest)
 			{ //LSY_上昇
 				dtsp = dtmid;
-				mcsp = mcmid;
+				mcsp = -mcmid;
 				if(!spflag)motordrive(l_out, dtsp);
 				else if(spflag)motordrive(l_out, mcsp);
 				printf("left outside up\n");
@@ -85,7 +85,7 @@ void config()
 			else if (reccon[DY] > highest)
 			{ //LSY＿下降
 				dtsp = -dtmid;
-				mcsp = -mcmid;
+				mcsp = mcmid;
 				if(!spflag)motordrive(l_out, dtsp);
 				else if(spflag)motordrive(l_out, mcsp);
 				printf("left outside down\n");
@@ -257,7 +257,7 @@ void move()
 	case RB:
 		if (reccon[BUTTON] & (1 << 5))
 		{
-			motordrive(pp2, -0.5);
+			motordrive(pp2, 0.5);
 			printf("right pooon start\n");
 		}
 		else
@@ -268,7 +268,7 @@ void move()
 		break;
 
 	case Y: //射出スイッ
-			dtsp = dtmid;
+			dtsp = -dtmid;
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 3))
 			{
@@ -283,13 +283,15 @@ void move()
 		break;
 
 	case X: //
-			dtsp = dtmid;
+			dtsp = 0.5;
 			printf("%4.2f  ", dtsp);
 			if (reccon[BUTTON] & (1 << 2))
 			{
+				motordrive(pen,-dtsp);
 			}
 			else
 			{
+				motordrive(pen,0);
 			}
 		break;
 
