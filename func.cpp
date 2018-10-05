@@ -54,18 +54,23 @@ void config()
 			if (reccon[DY] < lowest)
 			{ //LSY_前進
 				dtsp = dtmid;
-				motordrive(l_out, dtsp);
+				mcsp = mcmid;
+				if(!spflag)motordrive(l_out, dtsp);
+				else if(spflag)motordrive(l_out, mcsp);
 				printf("left outside up\n");
 			}
 			else if (reccon[DY] > highest)
 			{ //LSY_後進
 				dtsp = -dtmid;
-				motordrive(l_out, dtsp);
+				mcsp = -mcmid;
+				if(!spflag)motordrive(l_out, dtsp);
+				else if(spflag)motordrive(l_out, mcsp);
 				printf("left outside down\n");
 			}
 			else
 			{ //停止
-				motordrive(l_out, 0);
+				if(!spflag)motordrive(l_out, 0);
+				else if(spflag)motordrive(l_out, 0);
 				printf("left outside stop\n");
 			}
 		}

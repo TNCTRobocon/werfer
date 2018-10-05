@@ -29,9 +29,9 @@ void dtm(int id, float dt)
 void mcm(int id, int mc)
 { //mc
 	serialPrintf(srid, "sel %d\r", id);
-	serialPrintf(srid, "rady %d\r", mc);
-	if (id == tirelb)
-		serialPrintf(srid, "go\r");
+	serialPrintf(srid, "mc %d\r", mc);
+	printf("\nmc %4.2f\r", mc);
+	delay(1);
 }
 
 void Front(float value)
@@ -66,7 +66,7 @@ void motordrive(int id, float value)
 {
 	if (spflag == 1)
 	{
-		printf("mc no\n");
+		mcm(id,value);
 	}
 	else
 	{
