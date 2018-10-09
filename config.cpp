@@ -1,8 +1,8 @@
 #include "headers.h"
-
-void lift_in_right()
+/*キャリブレーション時のプログラム*/
+void lift_in_right()//右の内側
 {
-	if (reccon[RSY] > highest)
+	if (reccon[RSY] > highest)//上昇
 	{
 		dtsp = -dtmid;
 		mcsp = mcmid;
@@ -12,7 +12,7 @@ void lift_in_right()
 			motordrive(r_in, mcsp);
 		printf("right inside up\n");
 	}
-	else if (reccon[RSY] < lowest)
+	else if (reccon[RSY] < lowest)//下降
 	{
 		dtsp = dtmid;
 		mcsp = mcmid;
@@ -28,7 +28,7 @@ void lift_in_right()
 		printf("right inside stop\n");
 	}
 }
-
+/*左内側の昇降*/
 void lift_in_left()
 {
 	if (reccon[LSY] > highest)
@@ -70,7 +70,7 @@ void config()
 		{
 			if (reccon[DY] < lowest)
 			{ //LSY_上昇
-				dtsp = -dtmid;
+				dtsp = dtmid;
 				mcsp = mcmid;
 				if (!spflag)
 					motordrive(l_out, dtsp);
@@ -80,7 +80,7 @@ void config()
 			}
 			else if (reccon[DY] > highest)
 			{ //LSY＿下降
-				dtsp = dtmid;
+				dtsp = -dtmid;
 				mcsp = mcmid;
 				if (!spflag)
 					motordrive(l_out, dtsp);
@@ -135,7 +135,7 @@ void config()
 		}
 		break;
 	case Y: //右外上昇
-		dtsp = dtmid;
+		dtsp = -dtmid;
 		mcsp = mcmid;
 		if (reccon[BUTTON] & (1 << 3))
 		{
@@ -155,7 +155,7 @@ void config()
 	case X: //
 
 	case A: //右外下降
-		dtsp = -dtmid;
+		dtsp = dtmid;
 		mcsp = -mcmid;
 		if (reccon[BUTTON] & (1 << 0))
 		{
