@@ -3,8 +3,8 @@
 
 #define r_out 19//3//////////16↓
 #define r_in 17//1
-#define l_in 16//0
-#define l_out 18//2
+#define l_in 18//0
+#define l_out 16//2
 
 #define tirerf 20 //タイヤ右前//4
 #define tirelf 21 //タイヤ左前//5

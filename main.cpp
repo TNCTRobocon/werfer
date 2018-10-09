@@ -1,5 +1,5 @@
 #include "headers.h"
-#include "func.h"
+//#include "func.h"
 
 int srid;
 

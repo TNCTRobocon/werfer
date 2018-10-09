@@ -19,7 +19,8 @@
 
 #include"controller.h"
 #include"motor.h"
-#include "func.h"
+#include "move.h"
+#include "config.h"
 
 extern int srid;
 

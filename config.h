@@ -1,9 +1,8 @@
-#ifndef FUNC_H
-#define FUNC_H
+#ifndef CONFIG_H
+#define CONFIG_H
 
 #include "headers.h"
 
 void config();
-void move();
 
 #endif
