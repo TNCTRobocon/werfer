@@ -10,9 +10,9 @@ void setupUART()
 		printf("can not open serialport\nq	");
 	else
 		printf("success open serialport\n");
-	serialPrintf(srid, "sel 0\r");
-	serialPrintf(srid, "dt 0\r");
-	serialPrintf(srid, "mc 0\r");
+		serialPrintf(srid, "sel 0\r");
+		serialPrintf(srid, "dt 0\r");
+		serialPrintf(srid, "mc 0\r");
 }
 
 int main()
@@ -38,7 +38,6 @@ int main()
 	setupcon();
 	read(fd, &joysta, sizeof(joysta));
 	ebuf = joysta;
-
 	while (1)
 	{
 		if (!st_status) //キャリブレーションの時は動かない
