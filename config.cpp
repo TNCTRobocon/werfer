@@ -4,7 +4,7 @@ void lift_in_right()//右の内側
 {
 	if (reccon[RSY] > highest)//上昇
 	{
-		dtsp = -dtmid;
+		dtsp = dtmid;
 		mcsp = mcmid;
 		if (!spflag)
 			motordrive(r_in, dtsp);
@@ -14,7 +14,7 @@ void lift_in_right()//右の内側
 	}
 	else if (reccon[RSY] < lowest)//下降
 	{
-		dtsp = dtmid;
+		dtsp = -dtmid;
 		mcsp = mcmid;
 		if (!spflag)
 			motordrive(r_in, dtsp);
@@ -33,7 +33,7 @@ void lift_in_left()
 {
 	if (reccon[LSY] > highest)
 	{
-		dtsp = -dtmid;
+		dtsp = dtmid;
 		mcsp = mcmid;
 		if (!spflag)
 			motordrive(l_in, dtsp);
@@ -43,7 +43,7 @@ void lift_in_left()
 	}
 	else if (reccon[LSY] < lowest)
 	{
-		dtsp = dtmid;
+		dtsp = -dtmid;
 		mcsp = -mcmid;
 		if (!spflag)
 			motordrive(l_in, dtsp);
