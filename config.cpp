@@ -5,21 +5,13 @@ void lift_in_right()//右の内側
 	if (reccon[RSY] > highest)//上昇
 	{
 		dtsp = dtmid;
-		mcsp = mcmid;
-		if (!spflag)
 			motordrive(r_in, dtsp);
-		else if (spflag)
-			motordrive(r_in, mcsp);
 		printf("right inside up\n");
 	}
 	else if (reccon[RSY] < lowest)//下降
 	{
 		dtsp = -dtmid;
-		mcsp = mcmid;
-		if (!spflag)
 			motordrive(r_in, dtsp);
-		else if (spflag)
-			motordrive(r_in, mcsp);
 		printf("right inside down\n");
 	}
 	else
@@ -34,22 +26,14 @@ void lift_in_left()
 	if (reccon[LSY] > highest)
 	{
 		dtsp = dtmid;
-		mcsp = mcmid;
-		if (!spflag)
 			motordrive(l_in, dtsp);
-		else if (spflag)
-			motordrive(l_in, mcsp);
 		printf("left inside up\n");
 	}
 	else if (reccon[LSY] < lowest)
 	{
 		dtsp = -dtmid;
-		mcsp = -mcmid;
-		if (!spflag)
 			motordrive(l_in, dtsp);
-		else if (spflag)
-			motordrive(l_in, mcsp);
-		printf("left inside down\n");
+			printf("left inside down\n");
 	}
 	else
 	{
@@ -71,28 +55,17 @@ void config()
 			if (reccon[DY] < lowest)
 			{ //LSY_上昇
 				dtsp = dtmid;
-				mcsp = mcmid;
-				if (!spflag)
 					motordrive(l_out, dtsp);
-				else if (spflag)
-					motordrive(l_out, mcsp);
 				printf("left outside up\n");
 			}
 			else if (reccon[DY] > highest)
 			{ //LSY＿下降
 				dtsp = -dtmid;
-				mcsp = mcmid;
-				if (!spflag)
 					motordrive(l_out, dtsp);
-				else if (spflag)
-					motordrive(l_out, mcsp);
 				printf("left outside down\n");
 			}
 			else
 			{ //停止
-				if (!spflag)
-					motordrive(l_out, 0);
-				else if (spflag)
 					motordrive(l_out, 0);
 				printf("left outside stop\n");
 			}
@@ -136,14 +109,9 @@ void config()
 		break;
 	case Y: //右外上昇
 		dtsp = -dtmid;
-		mcsp = mcmid;
 		if (reccon[BUTTON] & (1 << 3))
 		{
-			if (!spflag)
 				motordrive(r_out, dtsp);
-			else if (spflag)
-				motordrive(r_out, mcsp);
-			printf("right outside up\n");
 		}
 		else
 		{
@@ -156,13 +124,10 @@ void config()
 
 	case A: //右外下降
 		dtsp = dtmid;
-		mcsp = -mcmid;
 		if (reccon[BUTTON] & (1 << 0))
 		{
-			if (!spflag)
+
 				motordrive(r_out, dtsp);
-			else if (spflag)
-				motordrive(r_out, mcsp);
 			printf("right outside down\n");
 		}
 		else
